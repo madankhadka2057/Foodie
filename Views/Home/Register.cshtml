@@ -1,0 +1,91 @@
+﻿@model UserEdit
+<div class="container" style="margin-top:30px">
+	<div class="col-md-10 col-md-offset-1 mx-auto" >
+		<div class="panel panel-default">
+			<div class="panel-heading">
+				<h3 class="panel-title"><strong>Sign Up </strong></h3>
+			</div>
+
+			<div class="panel-body">
+				<form role="form" asp-action="Register" enctype="multipart/form-data">
+					<div asp-validation-summary="ModelOnly"  class="alert alert-danger">
+					</div>
+					<div class="row ">
+						<div class="col-xs-12 col-sm-6 col-md-6 pt-4">
+							<div class="form-group">
+								<input type="text" asp-for="Name" id="first_name" class="form-control" placeholder="Name" tabindex="1">
+								<span asp-validation-for="Name" class="alert-danger"></span>
+							</div>
+						</div>
+						<div class="col-xs-12 col-sm-6 col-md-6 pt-4">
+							<div class="form-group">
+								<input type="text" asp-for="Username" name="Username" id="Username" class="form-control" placeholder="Username" tabindex="1">
+								<span asp-validation-for="Username" class="alert-danger my-5 "></span>
+							</div>
+						</div>
+					</div>
+					<div class="row ">
+						<div class="col-xs-12 col-sm-6 col-md-6 pt-4">
+							<div class="form-group">
+								<input type="text" asp-for="Email" id="email" class="form-control" placeholder="Email" tabindex="1">
+								<span asp-validation-for="Email" class="alert-danger"></span>
+							</div>
+						</div>
+						<div class="col-xs-12 col-sm-6 col-md-6 pt-4">
+							<div class="form-group">
+								<input type="number" asp-for="Mobile" id="middle_name" class="form-control" placeholder="Mobile" tabindex="1">
+								<span asp-validation-for="Mobile" class="alert-danger"></span>
+							</div>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-xs-12 col-sm-6 col-md-6 pt-4">
+							<div class="form-group">
+								<input type="text" asp-for="Address" id="address" class="form-control " placeholder="Address" tabindex="5">
+								<span asp-validation-for="Address" class="alert-danger"></span>
+							</div>
+						</div>
+						<div class="col-xs-12 col-sm-6 col-md-6 pt-4">
+							<div class="form-group">
+								<input type="password" asp-for="Passwrod" id="password" class="form-control " placeholder="Password" tabindex="6">
+								<span asp-validation-for="Passwrod" class="alert-danger"></span>
+							</div>
+						</div>
+					</div>
+					<div class="row ">
+						<div class="col-xs-12 col-sm-12 col-md-12 pt-4">
+							<div class="form-group">
+								<input asp-for="ProfileImg" type="file" id="ProfileImg" class="form-control " placeholder="ProfileImg" tabindex="5">
+								<span asp-validation-for="ProfileImg"></span>
+							</div>
+						</div>
+					</div>
+
+					<div class="input-group my-3">
+						<div class="checkbox" style="margin-top: 0px;">
+							<label>
+								<input id="login-remember" type="checkbox" name="remember" value="1"> Remember me
+							</label>
+						</div>
+					</div>
+
+					<button type="submit" class="btn btn-success">Sign Up</button>
+
+					<hr style="margin-top:10px;margin-bottom:10px;">
+
+					<div class="form-group">
+
+						<div style="font-size:85%">
+							if you have an account!
+							<a asp-controller="Account" asp-action="Login">
+								Sign In Here
+							</a>
+						</div>
+
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+</div>
+

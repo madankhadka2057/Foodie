@@ -1,0 +1,74 @@
+﻿
+@{
+    ViewData["title"] = "Carts Items";
+}
+@model List<CartEdit>
+<link href="~/css/viewcart.css" rel="stylesheet" />
+@{
+    if (Model.Count > 0)
+    {
+        <div class="container-md">
+            <div class="row  ">
+                <div class="col-md-7 cart">
+                    <div class="title">
+                        <div class="row">
+                            <div class="col"><h4><b>Shopping Cart</b></h4></div>
+                            <div class="col align-self-center text-right text-muted">@Model.Count items</div>
+                        </div>
+                    </div>
+                    @{
+                        foreach (var carts in Model)
+                        {
+                            <div class="row border-top border-bottom">
+                                <div class="row main align-items-center">
+                                    <div class="col-2"><img class="img-fluid" src="~/ProductImages/@carts.ImageUrl"></div>
+                                    <div class="col">
+                                        <div class="row text-muted">@carts.ProductName</div>
+                                        <div class="row">@carts.Category</div>
+                                    </div>
+                                    <div class="col">
+                                        <form asp-action="UpdateCartQuantity" method="post">
+                                            <input type="hidden" name="CartId" value="@carts.CartId" />
+                                            <input type="number" min="1" name="Quantity" value="@carts.Quantity" class="border text-center" style="width: 50px;" min="1" onchange="this.form.submit()" />
+                                        </form>
+                                    </div>
+                                    <div class="col d-flex justify-content-between ">
+                                       Rs. @carts.Price
+
+                                        <a asp-action="RemoveCartItem" asp-controller="Cart" asp-route-Id="@carts.CartId"><span class="close">&#10005;</span></a>
+                                    </div>
+                                </div>
+                            </div>
+                        }
+                    }
+
+
+                    <div class="back-to-shop"><a asp-action="ViewProduct" asp-controller="Product"><span class="fs-4"> &leftarrow;</span> <span class="text-muted fs-5 text-black">Back to shop</span> </a></div>
+                </div>
+                <div class="col-md-5 summary">
+                    <div><h5><b>Summary</b></h5></div>
+                    <hr>
+                    <div class="row">
+                        <div class="col" style="padding-left:0;">TOTAL ITEMS @Model.Count</div>
+                        <div class="col text-right">Rs. @ViewBag.TotalPrice</div>
+                    </div>
+                    <form>
+                        <p>SHIPPING</p>
+                        <select><option class="text-muted">Standard-Delivery- Rs. 100.00</option></select>
+                        
+                    </form>
+                    <div class="row" style="border-top: 1px solid rgba(0,0,0,.1); padding: 2vh 0;">
+                        <div class="col">TOTAL PRICE</div>
+                        <div class="col text-right">Rs. @(Convert.ToDecimal(ViewBag.TotalPrice) + Convert.ToDecimal(100.00))</div>
+                    </div>
+                    <a asp-controller="Cart" asp-action="CheckOutPayment" class="btn">CHECKOUT</a>
+                </div>
+            </div>
+
+        </div>
+    }
+    else
+    {
+        <h1 class="my-5 py-5 text-center">Cart is empty please add some product to cart</h1>
+    }
+}

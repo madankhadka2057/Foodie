@@ -1,0 +1,27 @@
+﻿
+@{
+    ViewData["title"] = "Add Category";
+}
+@model CategoryEdit;
+
+<link href="~/css/addproduct/addproduct.css" rel="stylesheet" />
+<div class="container-fluid px-1 py-5 mx-auto">
+    <div class="row d-flex justify-content-center">
+        <div class="col-xl-7 col-lg-8 col-md-9 col-11 text-center">
+            <h3>Add Product Category</h3>
+            <div class="card">
+                <div asp-validation-summary="ModelOnly" class="text-center mb-4 text-danger"></div>
+                <form class="form-card" asp-action="AddCategory" asp-controller="Product">
+                    <div class="row justify-content-between text-left">
+                        <div class="form-group col-sm-12 flex-column d-flex "> <label class="form-control-label">Category Name<span class="text-danger"> *</span></label> <input asp-for="Name" type="text" id="name" name="name" placeholder="Enter category name"></div>
+                        <span class="my-1 text-danger" asp-validation-for="Name"></span>
+                    </div>
+                   
+                    <div class="row justify-content-center">
+                        <div class="form-group col-sm-6"> <button type="submit" class="btn-block btn-primary">Add Category</button> </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,149 @@
+﻿
+@{
+    ViewData["title"] = "Profile";
+}
+@model UserEdit
+
+<!-- Profile 1 - Bootstrap Brain Component -->
+<section class="bg-light mt-0 mx-auto">
+    <div class="container mx-auto">
+    <div class="row gy-4 gy-lg-0 mx-auto">
+      <div class="col-12 col-lg-8 col-xl-9">
+        <div class="card widget-card border-light shadow-sm">
+          <div class="card-body p-4">
+            <ul class="nav nav-tabs" id="profileTab" role="tablist">
+              <li class="nav-item" role="presentation">
+                <button class="nav-link active" id="overview-tab" data-bs-toggle="tab" data-bs-target="#overview-tab-pane" type="button" role="tab" aria-controls="overview-tab-pane" aria-selected="true">Overview</button>
+              </li>
+              <li class="nav-item" role="presentation">
+                <button class="nav-link" id="profile-tab" data-bs-toggle="tab" data-bs-target="#profile-tab-pane" type="button" role="tab" aria-controls="profile-tab-pane" aria-selected="false">Profile</button>
+              </li>
+              <li class="nav-item" role="presentation">
+                 <a class="nav-link" id="password-tab" asp-action="ChangePassword" data-ajax="true" data-ajax-method="GET" data-ajax-update="#password-tab-pane" data-bs-toggle="tab" data-bs-target="#password-tab-pane" role="tab" aria-controls="password-tab-pane" aria-selected="false">Password</a>
+              </li>
+            </ul>
+            <div class="tab-content pt-4" id="profileTabContent">
+              <div class="tab-pane fade show active" id="overview-tab-pane" role="tabpanel" aria-labelledby="overview-tab" tabindex="0">
+               
+                <h3 class="mb-3 font-weight-bold">Profile</h3>
+                <div class="col-12 ">
+                    <div class="row gy-2 ">
+                        <label class="col-12 form-label m-0">Profile Image</label>
+                        <div class="col-12">
+                            <img src="~/ProfileImages/@Model.ImageUrl" width="200px" height="200px" class="rounded-2" alt="Luna John">
+                        </div>
+
+                    </div>
+                </div>
+                <div class="row g-0">
+                  <div class="col-5 col-md-3 bg-light border-bottom border-white border-3">
+                    <div class="p-2">Name</div>
+                  </div>
+                  <div class="col-7 col-md-9 bg-light border-start border-bottom border-white border-3">
+                    <div class="p-2">@Model.Name</div>
+                  </div>
+                  <div class="col-5 col-md-3 bg-light border-bottom border-white border-3">
+                     <div class="p-2">Username</div>
+                  </div>
+                  <div class="col-7 col-md-9 bg-light border-start border-bottom border-white border-3">
+                    <div class="p-2">@Model.Username</div>
+                  </div>
+                  <div class="col-5 col-md-3 bg-light border-bottom border-white border-3">
+                    <div class="p-2">Address</div>
+                  </div>
+                  <div class="col-7 col-md-9 bg-light border-start border-bottom border-white border-3">
+                    <div class="p-2">@Model.Address</div>
+                  </div>                 
+                  <div class="col-5 col-md-3 bg-light border-bottom border-white border-3">
+                    <div class="p-2">Phone</div>
+                  </div>
+                  <div class="col-7 col-md-9 bg-light border-start border-bottom border-white border-3">
+                    <div class="p-2">@Model.Mobile</div>
+                  </div>
+                  <div class="col-5 col-md-3 bg-light border-bottom border-white border-3">
+                    <div class="p-2">Email</div>
+                  </div>
+                  <div class="col-7 col-md-9 bg-light border-start border-bottom border-white border-3">
+                    <div class="p-2">@Model.Email</div>
+                  </div>
+                <div class="col-5 col-md-3 bg-light border-bottom border-white border-3">
+                    <div class="p-2">Role</div>
+                </div>
+                <div class="col-7 col-md-9 bg-light border-start border-bottom border-white border-3">
+                    <div class="p-2">@Model.UserRole</div>
+                </div>
+                </div>
+              </div>
+              <div class="tab-pane fade" id="profile-tab-pane" role="tabpanel" aria-labelledby="profile-tab" tabindex="0">
+                <form asp-action="ProfileEdit" class="row gy-3 gy-xxl-4" enctype="multipart/form-data">
+                  
+                    <div hidden class="col-12  col-md-6">
+                    <label for="UserId" class="form-label">UserId</label>
+                    <input  asp-for="UserId" asp-for="Name" class="form-control" id="Name">
+                </div>
+                  <div class="col-12 col-md-6">
+                    <label for="inputFirstName" class="form-label">Name</label>
+                      <input type="text" asp-for="Name" class="form-control" id="Name">
+                      <span asp-validation-for="Name" class="alert-danger"></span>
+                  </div>
+                  <div class="col-12 col-md-6">
+                    <label for="inputLastName" class="form-label">UserName</label>
+                     <input type="text" asp-for="Username" class="form-control" id="UserName"/>
+                     <span asp-validation-for="Username" class="alert-danger"></span>
+                  </div>
+                  <div class="col-12 col-md-6">
+                    <label for="inputEducation" class="form-label">Email</label>
+                    <input type="email" asp-for="Email" class="form-control" id="Email" >
+                    <span asp-validation-for="Email" class="alert-danger"></span>
+                  </div>
+                  <div class="col-12 col-md-6">
+                    <label for="inputSkills" class="form-label">Address</label>
+                    <input type="text" asp-for="Address" class="form-control" id="Address" >
+                  </div>
+                  <div class="col-12 col-md-6">
+                    <label for="inputJob" class="form-label">Phone</label>
+                    <input type="number" asp-for="Mobile" class="form-control" id="Phone" >
+                    <span asp-validation-for="Mobile" class="alert-danger"></span>
+                  </div>
+                  <div class="col-12 col-md-6">
+                    <label for="inputCompany" class="form-label">Profile Image</label>
+                     <input asp-for="ProfileImg" accept="image/*" class="form-control" id="ImageUrl">
+                     <span asp-validation-for="ProfileImg" class="alert-danger"></span>
+                     <img id="img-preview" class="mt-1 rounded-2" width="100px" height="100px" src="~/ProfileImages/@Model.ImageUrl" alt="profile" />
+                  </div>
+                  
+                  
+                  <div class="col-12">
+                    <button type="submit" class="btn btn-primary">Save Changes</button>
+                  </div>
+                </form>
+              </div>
+                  <div class="tab-pane fade" id="password-tab-pane" role="tabpanel" aria-labelledby="password-tab" tabindex="0">
+            </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script>
+
+  $(document).ready(function (){
+
+       $('#togglepass').click();
+      $('#ImageUrl').on('change', function () {
+        var input = this;
+        var fileName = input.files[0].name;
+        console.log(fileName)
+        if (input.files && input.files[0]) {
+            var reader = new FileReader();
+            reader.onload = function (e) {
+                $('#img-preview').attr('src', e.target.result);
+            }
+            reader.readAsDataURL(input.files[0]);
+        }
+      })
+  })
+  </script>
+
+</section>

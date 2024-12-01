@@ -1,0 +1,31 @@
+﻿@model PaymentEdit
+<link href="~/css/loader.css" rel="stylesheet" />
+<div id="preloader" style=" display:none; margin-top:40px;">
+    <div id="loader"></div>
+</div>
+    @* <div id="loader" style="display:none; margin-top:40px;">
+        <p>Loading... Please wait</p>
+        <!-- You can add your custom loader, like a spinner or animation -->
+    </div> *@
+<form id="esewa-form" data-ajax="true" data-ajax-method="post" action="https://uat.esewa.com.np/epay/main" method="POST">
+    <input value="@Model.TotalAmount" name="tAmt" type="hidden">
+    <input value="@Model.TotalAmount" name="amt" type="hidden">
+    <input value="0" name="txAmt" type="hidden">
+    <input value="0" name="psc" type="hidden">
+    <input value="0" name="pdc" type="hidden">
+    <input value="EPAYTEST" name="scd" type="hidden">
+    <input value="@Model.EncOrderId" name="pid" type="hidden">
+    <input value="https://localhost:7233/Cart/Success?q=su" type="hidden" name="su">
+    <input value="https://localhost:7233/Cart/Failure?q=fu" type="hidden" name="fu">
+    <input hidden value="e-Sewa" id="e-pay" class="bg-green-600 btn btn-success hover:bg-green-800 px-3 py-3  m-1" type="submit">
+</form>
+<script>
+    $(document).ready(function () {
+        $("#esewa-form").on("submit", function () {
+            $("#preloader").show();  // Show loader when form is submitted
+        });
+
+        // Programmatically submit the form
+        $("#esewa-form").submit();
+    });
+</script>

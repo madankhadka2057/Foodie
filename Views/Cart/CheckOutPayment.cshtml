@@ -1,0 +1,113 @@
+﻿
+<link href="~/css/checkoutpayment.css" rel="stylesheet" />
+<div class="container">
+    @* <div class="card-top border-bottom text-center">
+        <a href="#"> Back to shop</a>
+        <span id="logo">BBBootstrap.com</span>
+    </div> *@
+    <div class="card border-0">
+        <div class="row border-0">
+            <div class="col-md-6 gap-1 mt-4 mb-2">
+                <div class="right border-0">
+                    <div class="header">Order Summary</div>
+                    <p>@Model.Count items</p>
+                    <div class="overflow-scroll">
+                        @{
+                            foreach(var data in Model)
+                            {
+                                <div class="row item">
+                                    <div class="col-4 align-self-center"><img class="img-fluid" src="~/ProductImages/@data.ImageUrl"></div>
+                                    <div class="col-8">
+                                        <div class="row font-weight-bold "><b class="m-0 p-0">Rs. @data.ProductName</b></div>
+                                        <div class="row font-weight-bold "><b class="m-0 p-0">Rs. @data.Price</b></div>
+                                        <div class="row text-muted">
+                                            @(data.Description.Length > 30 ? data.Description.Substring(0, 30) + "..." : data.Description)
+                                        </div>
+
+                                        <div class="row">Qty: @data.Quantity</div>
+                                    </div>
+                                </div>
+                            }
+                        }
+                      
+                    </div>
+                    <hr>
+                    <div class="row lower">
+                        <div class="col text-left">Subtotal</div>
+                        <div class="col text-right">Rs. @ViewBag.TotalPrice</div>
+                    </div>
+                    <div class="row lower">
+                        <div class="col text-left">Delivery</div>
+                        <div class="col text-right">Rs. 100</div>
+                    </div>
+                    <div class="row lower">
+                        <div class="col text-left"><b>Total to pay</b></div>
+                        <div class="col text-right"><b>Rs. @(@ViewBag.TotalPrice+100)</b></div>
+                    </div>
+                    <p class="text-muted text-center mt-2">Complimentary Shipping & Returns</p>
+                </div>
+            </div>
+            <div class="col-md-6 mt-4 ">
+                <div class="left border-0">
+                    <div class="row">
+                        <span class="header">Payment</span>
+                        <div class="icons">
+                            <img src="~/images/eSewa.png" />
+                            <img src="~/images/cash-on-delivery.png" />
+                        </div>
+                    </div>
+                    <form asp-action="CheckOutPayment" asp-controller="Cart" id="paymentForm">
+                        <input name="TotalAmount" hidden value="@(@ViewBag.TotalPrice+100)" readonly>
+                        <span>Cardholder's name:</span>
+                        <input name="UserName" value="@ViewBag.UserName" readonly>
+                        <span>Payment Address</span>
+                        <input name="Address" value="@ViewBag.Address" readonly>
+                        <span>Payment Method</span>
+                        <div class="d-flex flex-column">
+                            <label class="radio">
+                                <input type="radio" name="payment" value="cod" checked>
+                                <div class="d-flex justify-content-start">
+                                    <img src="~/images/cash-on-delivery.png" />
+                                    <span class="mt-1 mx-3">Cash On Delivery</span>
+                                </div>
+                            </label>
+
+                            <label class="radio">
+                                <input type="radio" name="payment" value="esewa" >
+                                <div class="d-flex justify-content-start">
+                                    <img src="~/images/eSewa.png" />
+                                    <span class="mt-1 mx-3">eSewa</span>
+                                </div>
+                            </label>
+                            
+                        </div>
+                        <div class="buttons">
+                            <button id="paymentButton" type="submit" class="btn font-weight-bold fs-6 btn-warning btn-block">Proceed with Cash on Delivery</button>
+                        </div>
+                    </form>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div>
+    </div>
+</div>
+<script>
+    $(document).ready(function() {
+        // Listen for change events on the radio buttons
+        $('input[name="payment"]').change(function() {
+            var selectedPayment = $('input[name="payment"]:checked').val();
+
+            // Update the button text based on selected payment method
+            if (selectedPayment === 'esewa') {
+                $('#paymentButton').text('Proceed to eSewa');
+                $('#paymentButton').removeClass('btn-warning').addClass('btn-success ');
+            } else if (selectedPayment === 'cod') {
+                $('#paymentButton').text('Proceed with Cash on Delivery');
+                $('#paymentButton').removeClass('btn-success').addClass('btn-warning');
+            }
+        });
+    });
+</script>

@@ -1,0 +1,39 @@
+﻿@model List<CategoryEdit>
+
+    @{
+        if (Model != null)
+        {
+            var index = 0;
+            foreach (var category in Model)
+            {
+                index += 1;
+                <tr>
+                    <td>
+                        <ul class="action-list">
+                            <li>
+                                <a asp-action="EditCategory" asp-controller="Product" asp-route-Id="@category.CategoryId" class="btn btn-danger" id="Edit-model-btn" data-ajax="true" data-ajax-method="GET" data-ajax-update="#Edit-model" data-toggle="modal" data-target="#exampleModal">
+                                    <i class="fa fa-edit"></i>
+                                </a>
+                            </li>
+                            <li>
+                                <a asp-action="RemoveCategory" asp-controller="Product" asp-route-Id="@category.CategoryId" class="btn btn-danger">
+                                    <i class="fa fa-remove"></i>
+                                </a>
+                            </li>
+                        </ul>
+                    </td>
+                    <td>@index</td>
+                    <td>@category.Name</td>
+                    <td>@category.CategoryId</td>
+                    <td>@category.CreatedDate</td>
+                </tr>
+            }
+        }
+        else
+        {
+            <tr>
+                <td colspan="5"><h1>No Category Found</h1></td>
+            </tr>
+        }
+    }
+

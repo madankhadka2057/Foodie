@@ -1,0 +1,39 @@
+﻿@{
+    ViewData["title"] = "Add Product";
+}
+@model ProductEdit
+<link href="~/css/addproduct/addproduct.css" rel="stylesheet" />
+<div class="container-fluid px-1 py-5 mx-auto">
+    <div class="row d-flex justify-content-center">
+        <div class="col-xl-7 col-lg-8 col-md-9 col-11 text-center">
+            <h3>Add Product</h3>
+            <div class="card">
+                <div asp-validation-summary="ModelOnly" class="text-center mb-4"></div>
+                <form asp-action="AddProduct" enctype="multipart/form-data" class="form-card">
+                    <div class="row justify-content-between text-left">
+                        <div class="form-group col-sm-6 flex-column d-flex "> <label class="form-control-label">Name<span class="text-danger"> *</span></label> <input asp-for="Name" type="text" id="name" name="name" placeholder="Enter name of food" onblur="validate(1)"> </div>
+                        <div class="form-group col-sm-6 flex-column d-flex"> <label class="form-control-label">Description<span class="text-danger"> *</span></label> <input asp-for="Description" type="text" id="description" name="description" placeholder="Enter description of food " onblur="validate(3)"> </div>
+                    </div>
+                    <div class="row justify-content-between text-left">
+                        <div class="form-group col-sm-6 flex-column d-flex"> <label class="form-control-label">Price<span class="text-danger"> *</span></label> <input asp-for="Price" type="number" id="price" name="price" placeholder="Enter price of food " onblur="validate(2)"> </div>
+                        <div class="form-group col-sm-6 flex-column d-flex"> <label class="form-control-label">Quantity<span class="text-danger"> *</span></label> <input asp-for="Quantity" type="number" id="quantity" name="quantity" placeholder="Enter food quantity" onblur="validate(4)"> </div>
+                    </div>
+                    <div class="row justify-content-between text-left">
+                        <div class="form-group  col-6 flex-column d-flex">
+                            <label class="form-control-label mb-2">Category<span class="text-danger"> *</span></label>
+                            <select asp-items="@ViewBag.category" asp-for="CategoryId" class="form-select py-2 form-select-sm" aria-label=".form-select-sm example">
+                                <option selected>Select Category</option>
+                            </select>
+                        </div>
+                        <div class="form-group col-6 flex-column d-flex"> <label class="form-control-label">Food Image<span class="text-danger"> *</span></label> <input asp-for="foodImage" type="file" id="foodImage" name="foodImage" onblur="validate(6)"> </div>
+                    </div>
+                    @* <div class="row justify-content-between text-left">
+                    </div> *@
+                    <div class="row justify-content-center">
+                        <div class="form-group col-sm-6"> <button type="submit" class="btn-block btn-primary"><i class="fa fa-plus-circle"> </i> Add Product</button> </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

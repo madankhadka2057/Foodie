@@ -1,0 +1,244 @@
+﻿.card {
+    max-width: 1000px;
+    margin: 2vh;
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+}
+
+.card-top {
+    padding: 0.7rem 5rem;
+}
+
+    .card-top a {
+        float: left;
+        margin-top: 0.7rem;
+    }
+
+#logo {
+    font-family: 'Dancing Script';
+    font-weight: bold;
+    font-size: 1.6rem;
+}
+.right .overflow-scroll{
+    height:250px;
+}
+.card-body {
+    padding: 0 5rem 5rem 5rem;
+    background-image: url("https://i.imgur.com/4bg1e6u.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+@media(max-width:768px) {
+    .card-body {
+        padding: 0 1rem 1rem 1rem;
+        background-image: url("https://i.imgur.com/4bg1e6u.jpg");
+        background-size: cover;
+        background-repeat: no-repeat;
+    }
+
+    .card-top {
+        padding: 0.7rem 1rem;
+    }
+}
+
+.row {
+    margin: 0;
+}
+
+.upper {
+    padding: 1rem 0;
+    justify-content: space-evenly;
+}
+
+#three {
+    border-radius: 1rem;
+    width: 22px;
+    height: 22px;
+    margin-right: 3px;
+    border: 1px solid blue;
+    text-align: center;
+    display: inline-block;
+}
+
+#payment {
+    margin: 0;
+    color: blue;
+}
+
+.icons {
+    margin-left: auto;
+}
+
+form span {
+    color: rgb(179, 179, 179);
+}
+
+form {
+    padding: 2vh 0;
+}
+
+input {
+    border: 1px solid rgba(0, 0, 0, 0.137);
+    padding: 1vh;
+    margin-bottom: 4vh;
+    outline: none;
+    width: 100%;
+    background-color: rgb(247, 247, 247);
+}
+
+    input:focus::-webkit-input-placeholder {
+        color: transparent;
+    }
+
+.header {
+    font-size: 1.5rem;
+}
+
+.left {
+    background-color: #ffffff;
+    padding: 2vh;
+}
+
+    .left img {
+        width: 2rem;
+    }
+
+    .left .col-4 {
+        padding-left: 0;
+    }
+
+.right .item {
+    padding: 0.3rem 0;
+}
+
+.right {
+    background-color: #ffffff;
+    padding: 2vh;
+}
+
+.col-8 {
+    padding: 0 1vh;
+}
+
+.lower {
+    line-height: 2;
+}
+
+.btn {
+    background-color: rgb(23, 4, 189);
+    border-color: rgb(23, 4, 189);
+    color: white;
+    width: 100%;
+    font-size: 0.7rem;
+    margin: 4vh 0 1.5vh 0;
+    padding: 1.5vh;
+    border-radius: 0;
+}
+
+    .btn:focus {
+        box-shadow: none;
+        outline: none;
+        box-shadow: none;
+        color: white;
+        -webkit-box-shadow: none;
+        -webkit-user-select: none;
+        transition: none;
+    }
+
+    .btn:hover {
+        color: white;
+        background-color:cornflowerblue
+    }
+
+a {
+    color: black;
+}
+
+    a:hover {
+        color: black;
+        text-decoration: none;
+    }
+
+
+
+input[type=checkbox] {
+    width: unset;
+    margin-bottom: unset;
+}
+.cancel {
+    text-decoration: none
+}
+
+.bg-pay {
+    background-color: #eee;
+    border-radius: 2px
+}
+
+.com-color {
+    color: #8f37aa !important
+}
+.btn-success{
+    background-color: forestgreen;
+}
+.btn-success:hover {
+    background-color: green;
+}
+.radio {
+    cursor: pointer
+}
+
+label.radio input {
+    position: absolute;
+    top: 0;
+    left: 0;
+    visibility: hidden;
+    pointer-events: none
+}
+
+label.radio div {
+    padding: 7px 14px;
+    border: 2px solid #8f37aa;
+    display: inline-block;
+    color: #8f37aa;
+    border-radius: 3px;
+    width: 100%;
+    margin-bottom: 10px
+}
+
+label.radio input:checked + div {
+    border-color: #8f37aa;
+    background-color: #8f37aa;
+    color: #fff
+}
+
+.fw-500 {
+    font-weight: 400
+}
+
+.lh-16 {
+    line-height: 16px
+}
+
+::-webkit-scrollbar {
+    width: 5px;
+    height:0px;
+    
+}
+/* Track of the scrollbar */
+::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 10px;
+}
+
+/* Handle of the scrollbar */
+::-webkit-scrollbar-thumb {
+   background-color:black;
+    border-radius: 10px;
+    border: 2px solid #f1f1f1;
+}
+
+    /* Handle on hover */
+    ::-webkit-scrollbar-thumb:hover {
+        background: #555;
+    }
+

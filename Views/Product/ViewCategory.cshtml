@@ -1,0 +1,73 @@
+﻿<!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css /> -->
+<link href="~/css/viewcategory.css" rel="stylesheet" />
+@model List<CategoryEdit>
+<div class="container">
+    <div class="row">
+        <div class="col-md-offset-1 col-md-12">
+            <div class="panel">
+                <div class="panel-heading">
+                    <div class="row">
+                        <div class="col-sm-12 p-0 col-xs-12">
+                            <div asp-validation-summary="ModelOnly"></div>
+                            <a asp-action="AddCategory" asp-controller="Product" class="btn  rounded-1  btn-primary pull-left"><i class="fa fa-plus-circle"></i> Add New</a>
+                            <form asp-action="SearchCategory" class="form-horizontal pull-right" data-ajax="true" data-ajax-method="GET" data-ajax-update="#Search-table">
+                                <div class="search">
+                                    <input type="text"  class="search-input" placeholder="Search..." name="Search"> 
+                                    <button type="submit"class="search-icon border-0"> <i class="fa fa-search"></i> </button>
+                                </div>
+                              
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                <div class="panel-body table-responsive">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>Action</th>
+                                <th>sn</th>
+                                <th>Categoty Name</th>
+                                <th>Category Id</th>
+                                <th>Created Date</th>
+                            </tr>
+                        </thead>
+                        <tbody id="Search-table">
+                            @{
+                                if(Model!=null){
+
+                                    var index = 0;
+                                    foreach(var category in Model)
+                                {
+                                    index += 1;
+                                    <tr>
+                                        <td>
+                                            <ul class="action-list">
+                                                 <li><a asp-action="EditCategory" asp-controller="Product" asp-route-Id="@category.CategoryId" class="btn btn-danger"  id="Edit-model-btn" data-ajax="true" data-ajax-method="GET" data-ajax-update="#Edit-model" data-toggle="modal" data-target="#exampleModal"><i class="fa fa-edit"></i></a></li>
+                                                <li><a asp-action="RemoveCategory" asp-controller="Product" asp-route-Id="@category.CategoryId" class="btn btn-danger"><i class="fa fa-remove"></i></a></li>
+                                            </ul>
+                                        </td>
+                                        <td>@index</td>
+                                        <td>@category.Name</td>
+                                        <td>@category.CategoryId</td>
+                                        <td>@category.CreatedDate</td>
+                                        </tr>
+                                    }
+                                }
+                                else
+                                {
+                                    <h1>No Category Found</h1>
+                                }
+                              }
+                        </tbody>
+                    </table>
+                </div>
+                <div class="modal bd-example-modal-lg fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+                    <div class="modal-dialog modal-lg" id="Edit-model" role="document">
+                       
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

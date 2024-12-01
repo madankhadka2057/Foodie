@@ -1,0 +1,24 @@
+﻿@model ProductEdit
+<div class="modal-content">
+    <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Edit Categoty</h5>
+        <button type="button" class="close border-0 bg-transparent" data-dismiss="modal" aria-label="Close">
+            <span class="btn btn-danger" aria-hidden="true"><i class="fa fa-remove"></i></span>
+        </button>
+    </div>
+    <div class="modal-body">
+        <form asp-action="EditCategory" asp-controller="Product">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input hidden asp-for="Name" name="Name" />
+            <div class="form-group ">
+                <label for="CategoryName" class="col-form-label font-weight-bold ">Category Name</label>
+                <input type="text" name="Name" asp-for="Name" placeholder="Product Name" class="form-control py-3 mb-4" id="Name">
+                <span asp-validation-for="Name" class="text-danger"></span>
+            </div>
+            <div class="modal-footer ">
+                <button type="submit" class="btn btn-primary">Send Changes</button>
+                <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+            </div>
+        </form>
+    </div>
+</div>
